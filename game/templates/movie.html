@@ -1,0 +1,134 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid pl-xl-5">
+    <div class="row">
+
+    <!-- Content Column -->
+    <div class="col-lg-12 col-xl-11 mb-4 pl-xl-5 ">
+        
+        <!-- Project Card Example -->
+        <div class="card shadow mb-4  ">
+            <div class="card-header py-3 pl-xl-5">
+                <h3 class=" d-flex align-items-center justify-content-center m-0 medium font-weight-bold text-primary ">Movie Game</h3>
+            </div>
+            <div class="card-body">
+                <h4 class="medium font-weight-bold text-primary"><span
+                        class="float-right">Score : {% for key,movie in movie_detail.items %}
+                        {% if key == "score" %}
+                            {{movie}}</span></h4>
+                        {% endif %}
+                    {% endfor %}
+                        <br><br>
+                
+                <h4 class="medium font-weight-bold text-primary">Here is the movie name in Pig Latin !</h4>
+
+                <div class="col-xl-10 col-md-12 mb-4">
+                    <div class="card border-left-primary  shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="medium text-center font-weight-bold font-italic text-secondary">
+                                         
+                                        {% for key,movie in movie_detail.items %}
+                                            {% if key == "name" %}
+                                                <h2 class="medium font-weight-bold" >{{movie}}</h2>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               </div>
+              
+               <div class="col-xl-10 col-md-12 mb-4">
+                <div class="card border-left-warning shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <form action="{% url 'check' %}" method="GET">{% csrf_token %}                                    
+                                    <input  type="text" id="answer" name="answer" placeholder = "       Enter your answer" class="col-xl-12 medium text-center font-weight-bold font-italic text-secondary border-0"></input><br>
+                                  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+           </div>
+           <button type="submit" class=" ml-md-5 float-right">Submit</button></form>
+        </div>
+        <div class="col-lg-10 mb-4 pl-xl-5 ">
+            {% for key,movie in movie_detail.items %}
+                {% if key == "message" %}
+                    {% if movie != "" %}
+            <div class="card bg-success text-white shadow">
+                <div class="card-body">
+                    
+                <h2 class="medium font-weight-bold  text-center" >{{movie}}</h2>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+                </div>
+            </div>
+        </div>
+        
+    </div>
+        
+       <!--{% for key,movie in movie_detail.items %}
+        {% if key == "answer" %}
+            <h2 class="medium font-weight-bold" >{{movie}}</h2>
+            {% if answer1 == movie %}
+                <h2>Congratulations</h2>
+            {% endif %}
+        {% endif %}
+    {% endfor %}--> 
+
+        <!--<div class="align-content-center">
+        <h1>Hello </h1>
+        <p>This is movie page.</p>
+        {% for name,movie in movie_detail.items %}
+            <h2>Here is the movie name !</h2>
+            <h2>{{movie}}</h2>
+            
+        {% endfor %}-->
+</div>
+                
+{% endblock %}
+        
+{% block user_content %}        
+    <li class="nav-item dropdown no-arrow">
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="mr-2 d-none d-lg-inline text-gray-600 small">{% for key,name in movie_detail.items %}
+            {% if key == "user_name" %}
+                {{name}}
+            {% endif %}
+        {% endfor %}</span>
+        <img class="img-profile rounded-circle"
+            src="{% static 'img/undraw_profile.svg' %}">
+        </a>
+                        
+        <!-- Dropdown - User Information -->
+        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+            aria-labelledby="userDropdown">
+            <a class="dropdown-item" href="#">
+                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Profile
+            </a>
+            <a class="dropdown-item" href="#">
+            <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                Settings
+            </a>
+            <a class="dropdown-item" href="#">
+            <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                Activity Log
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Logout
+            </a>
+                            
+    </li>
+
+{% endblock %}

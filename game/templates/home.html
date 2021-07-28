@@ -1,0 +1,155 @@
+{% extends 'index.html' %}
+
+{% block content %}
+{% load static %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-3">
+        <h1 class="h3 mb-0 text-gray-800">Play Ground</h1>
+        <!--<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>-->
+    </div>
+    <div class="container"> 
+    <img src="{% static 'img/PigLatin.png' %}"><div class="row">
+    </div>
+    <!-- Page Heading -->
+    <br><br><br><br><br>
+
+    <!-- Content Row -->
+    <!--<div class="row">-->
+
+        
+            <!-- Color System -->
+            
+            <!--<a href="{% url 'register' %}">Register</a>-->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h4 class="m-0 font-weight-bold text-primary">Game Category</h4>
+                </div>
+                <div class="card-body">
+                    <p class="mb-0"> <span>Click on the below category in which you wish to play.</span>
+                        <br><span> If you are interested in playing with Movie names then click on Movie category.  </span>
+                    </p>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-10 mb-4 pl-xl-5 ">
+                            <a  href="{% url 'movie' %}">
+                            <div class="card bg-success text-white shadow">
+                                <div class="card-body text-center">
+                                    <strong><h3>Movie</h3></strong>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>   
+                <div class="card-body">
+                <div class="row">
+                    <div class="card-body">
+                            <p class="mb-0">If you are interested in playing with Song names then click on Song category.
+                            </p>
+                    </div>
+                    <div class="col-lg-10 mb-4 pl-xl-5">
+                            <a  href="{% url 'song' %}">
+                        <div class="card bg-warning text-white shadow">
+                            <div class="card-body text-center">
+                                <strong><h3> Song</h3></strong>
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+                        
+                </div>
+            </div>  
+            <div class="card-body">
+                    <div class="row">
+                        <div class="card-body">
+                            <p class="mb-0">If you are interested in visualizing your own english sentences in Pig Latin then click on Translator category.
+                            </p>
+                        </div>
+                        <div class="col-lg-10 mb-4 pl-xl-5">
+                            <a href="{% url 'translator1' %}">
+                            <div class="card bg-danger text-white shadow">
+                                <div class="card-body text-center">
+                                    <strong><h3> Translator</h3></strong>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    </div>
+        <br><br><br><br><br>
+
+
+            
+
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+
+
+<!-- End of Main Content -->
+
+        <!-- {{request.user}}
+        <h1>Hello </h1>
+        <p>This is home page.</p>
+        {% for player in user_detail %}
+            name : {{player.name}}
+            <br>
+        
+        {% endfor %}
+        <h1>{{movie_detail.name}}</h1>-->
+
+            
+{% endblock %}
+        
+{% block user_content %} 
+    {% if message != "" %}
+    <div class="alert success">
+        <span class="closebtn">&times;</span>  
+        <strong>
+                {{message}}
+             </strong> 
+    </div>
+    {% endif %}
+          
+    <li class="nav-item dropdown no-arrow">
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{user_name}}</span>
+        <img class="img-profile rounded-circle"
+            src="{% static 'img/undraw_profile.svg' %}">
+        </a>
+                        
+        <!-- Dropdown - User Information -->
+        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+            aria-labelledby="userDropdown">
+            <a class="dropdown-item" href="#">
+                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Profile
+            </a>
+            <a class="dropdown-item" href="#">
+            <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                Settings
+            </a>
+            <a class="dropdown-item" href="#">
+            <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                Activity Log
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Logout
+            </a>
+                            
+    </li>
+
+{% endblock %}   
